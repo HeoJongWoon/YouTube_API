@@ -1,3 +1,4 @@
+const frame = document.querySelector('section');
 const api_key = 'AIzaSyBSJ-kdPjUQEk9rtYFgHg9Gxbm5f2NfAGo';
 const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const pid = 'PL7xqVk2j6DQvIFBj0goyv3OYqsiQR6-2X';
@@ -7,5 +8,18 @@ const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxR
 fetch(resultURL)
 	.then((data) => data.json())
 	.then((json) => {
-		console.log(json);
+		console.log(json.items);
+		let tags = '';
+
+		json.items.map((data) => {
+			tags += `
+				<article>
+					<h2>${data.snippet.title}</h2>
+					<p>${data.snippet.description}</p>
+					<span>${data.snippet.publishedAt}</span>
+				</article>
+			`;
+		});
+
+		frame.innerHTML = tags;
 	});
