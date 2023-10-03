@@ -13,6 +13,14 @@ const desc_len = 180;
 //특정 구분자를 기점으로 문자를 잘라서 배열로 반환하기
 //문자에서 특정 기호나 문자값을 일괄적으로 변경하고 싶을때
 
+//beef-lettuce-tomato --> Beef Lettuce Tomato
+let text = 'beef-lettuce-tomato';
+text = text
+	.split('-')
+	.map((el) => el.charAt(0).toUpperCase() + el.slice(1))
+	.join(' ');
+console.log(text);
+
 fetch(resultURL)
 	.then((data) => data.json())
 	.then((json) => {
