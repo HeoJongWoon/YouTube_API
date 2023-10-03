@@ -4,22 +4,8 @@ const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const pid = 'PL7xqVk2j6DQvIFBj0goyv3OYqsiQR6-2X';
 const num = 5;
 const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-const tit_len = 50;
+const tit_len = 30;
 const desc_len = 180;
-
-//일정 글자수 이상일때 글자짜르고 말줄임표 붙이기
-//문자열.substr(시작위치,자를 글자수)
-
-//특정 구분자를 기점으로 문자를 잘라서 배열로 반환하기
-//문자에서 특정 기호나 문자값을 일괄적으로 변경하고 싶을때
-
-//beef-lettuce-tomato --> Beef Lettuce Tomato
-let text = 'beef-lettuce-tomato';
-text = text
-	.split('-')
-	.map((el) => el.charAt(0).toUpperCase() + el.slice(1))
-	.join(' ');
-console.log(text);
 
 fetch(resultURL)
 	.then((data) => data.json())
