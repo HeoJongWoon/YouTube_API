@@ -12,9 +12,10 @@ const tit_len = 30;
 const desc_len = 180;
 
 //동적으로 생성되는 요소에는 무조건 window에 이벤트 위임을 걸고
-window.addEventListener('click', (e) => {
+document.body.addEventListener('click', (e) => {
 	//선택자요소에 따라 다른 다른 함수를 호출
 	//썸네일 클릭시 팝업 호출
+	console.log(e.target.nodeName);
 	if (e.target.nodeName === 'IMG') createPop(e.target.getAttribute('data-vid'));
 	//닫기버튼 클릭시 팝업 제거
 	if (e.target.className === 'close') removePop();
